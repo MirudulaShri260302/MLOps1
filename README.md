@@ -28,7 +28,7 @@ mlops_labs
     ├── assets/
     ├── fastapi_lab1_env/
     ├── model/
-    │   └── iris_model.pkl
+    │   └── heart_model.pkl
     ├── src/
     │   ├── __init__.py
     │   ├── data.py
@@ -44,11 +44,11 @@ Note:
 
 ## Running the Lab
 
-1. First step is to train a Decision Tree Classifier(Although you have **`model/iris_model.pkl`** when you cloned from the repo, let's create a new model). To do this, move into **src/** folder with
+1. First step is to train a Random Forest Classifier(Although you have **`model/heart_model.pkl`** when you cloned from the repo, let's create a new model). To do this, move into **src/** folder with
     ```bash
     cd src
     ```
-2. To train the Decision Tree Classifier, run:
+2. To train the Random Forest Classifier, run:
     ```bash
     python train.py
     ```
@@ -87,31 +87,41 @@ You can also test out the results of your endpoints by interacting with them. Cl
 
 ### Data Models in FastAPI
 
-##### 1. IrisData class
+##### 1. Heart Disease class
 
 ```python
-class IrisData(BaseModel):
-    petal_length: float
-    sepal_length:float
-    petal_width:float
-    sepal_width:float
+class HeartData(BaseModel):
+    age: int
+    sex: int
+    cp: int
+    trestbps: int
+    chol: int
+    fbs: int
+    restecg: int
+    thalach: int
+    exang: int
+    oldpeak: float
+    slope: int
+    ca: int
+    thal: int
+
 ```
 
-The **IrisData** class is a [Pydantic model](https://docs.pydantic.dev/latest/concepts/models/) which defines the expected structure of the data for a request body. When you use it as a type annotation for a route operation parameter, FastAPI will perform the following actions:
+The **HeartData** class is a [Pydantic model](https://docs.pydantic.dev/latest/concepts/models/) which defines the expected structure of the data for a request body. When you use it as a type annotation for a route operation parameter, FastAPI will perform the following actions:
 - **Request Body Reading:** FastAPI will read the request body as JSON.
 - **Data Conversion:** It will convert the corresponding types, if necessary.
 - **Data Validation:** It will validate the data. If the data is invalid, it will return a 422 Unprocessable Entity error response with details about what was incorrect.
 
-#### 2. IrisResponse class
+#### 2. HeartResponse class
 
 ```python
-class IrisResponse(BaseModel):
+class HeartResponse(BaseModel):
     response:int
 ```
 
-The **IrisResponse** class is another Pydantic model that defines the structure of the response data for an endpoint. When you specify **response_model=IrisResponse** in a route operation, it tells FastAPI to:
-- **Serialize the Output**: Convert the output data to JSON format according to the IrisResponse model.
-- **Document the API**: Include the IrisResponse model in the generated API documentation, so API consumers know what to expect in the response.
+The **HeartResponse** class is another Pydantic model that defines the structure of the response data for an endpoint. When you specify **response_model=HeartResponse** in a route operation, it tells FastAPI to:
+- **Serialize the Output**: Convert the output data to JSON format according to the HeartResponse model.
+- **Document the API**: Include the HeartResponse model in the generated API documentation, so API consumers know what to expect in the response.
 
 ---
 
