@@ -12,7 +12,7 @@ In this Lab, we will learn how to expose ML models as APIs using [FastAPI](https
 2. **uvicorn**: Uvicorn is an [Asynchronous Server Gateway Interface - ASGI](https://youtu.be/vKjCkeJGbNk) web server implementation for Python. It is often used to serve FastAPI aplications.
 
 The workflow involves the following steps:
-1. Training a Decision Tree Classifier on Iris Dataset.
+1. Training a Random Forest Classifier on Heart Disease Dataset.
 2. Serving the trained model as an API using FastAPI and uvicorn.
 
 ## Setting up the lab
@@ -24,7 +24,7 @@ The workflow involves the following steps:
 
 ```
 mlops_labs
-└── fastapi_lab1
+└── MLOps1
     ├── assets/
     ├── fastapi_lab1_env/
     ├── model/
